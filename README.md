@@ -1,3 +1,3 @@
-* PROJECTE DEMO PHP
+# PROJECTE DEMO PHP
 
 Projecte prova

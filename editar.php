@@ -21,11 +21,25 @@ if (!$videojuego) exit("No hi ha resultats per aquest ID");
             <input type="hidden" name="id" value="<?= $videojuego["id"] ?>">
             <div class="form-group">
                 <label for="nombre">Nom</label>
-                <input value="<?= $videojuego["nombre"] ?>" placeholder="Nombre" class="form-control" type="text" name="nombre" id="nombre" required>            </div>
+                <input value="<?= $videojuego["nombre"] ?>" placeholder="Nombre" class="form-control" type="text" name="nombre" id="nombre" required>            
+            </div>
+            
             <div class="form-group">
                 <label for="descripcion">Descripció</label>
                 <textarea placeholder="Descripción" class="form-control" name="descripcion" id="descripcion" cols="30" rows="10" required><?= $videojuego["descripcion"] ?></textarea>
             </div>
+            
+            <div class="form-group">
+                <label for="categoria">Categoría</label>
+                <select class="form-control" name="categoria" id="categoria" required>
+                    <option value="">-- Selecciona una categoría --</option>
+                    <option value="accio">Acció</option>
+                    <option value="aventures">Aventures</option>
+                    <option value="esports">Esports</option>
+                    <option value="estrategia">Estrategia</option>
+                </select>
+            </div>
+            
             <div class="form-group mt-2">
                 <button class="btn btn-success">Guardar</button>
                 <a class="btn btn-warning" href="mostrat.php">Tornar</a>

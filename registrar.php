@@ -4,11 +4,13 @@ include "conexion.php";
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $nombre = $_POST["nombre"];
     $descripcion = $_POST["descripcion"];
+    $categoria = $_POST["categoria"];
 
-    $sentencia = $mysqli->prepare("INSERT INTO videojocs (nombre, descripcion) VALUES (?, ?)");
+    $sentencia = $mysqli->prepare("INSERT INTO videojocs (nombre, descripcion, categoria) VALUES (?, ?, ?)");
+    $sentencia->bind_param("sss", $nombre, $descripcion, $categoria);
+
     if (!$sentencia) die("Error en prepare: " . $mysqli->error);
 
-    $sentencia->bind_param("ss", $nombre, $descripcion);
     $sentencia->execute() or die("Error en execute: " . $sentencia->error);
 
     header("Location: mostrat.php");
@@ -30,10 +32,21 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                 <label for="descripcion">Descripción</label>
                 <textarea placeholder="Descripción" class="form-control" name="descripcion" id="descripcion" cols="30" rows="10" required></textarea>
             </div>
+            <div class="form-group">
+                <label for="categoria">Categoría</label>
+                <select class="form-control" name="categoria" id="categoria" required>
+                    <option value="">-- Selecciona una categoría --</option>
+                    <option value="accio">Acció</option>
+                    <option value="aventures">Aventures</option>
+                    <option value="esports">Esports</option>
+                    <option value="estrategia">Estrategia</option>
+                </select>
+            </div>
             <div class="form-group mt-2">
                 <button class="btn btn-success">Guardar</button>
                 <a class="btn btn-warning" href="mostrat.php">Volver</a>
             </div>
+    
         </form>
     </div>
 </div>

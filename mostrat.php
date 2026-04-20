@@ -1,4 +1,8 @@
 <?php
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+
 include "conexion.php";
 
 $resultado = $mysqli->query("SELECT id, nombre, descripcion FROM videojocs");
@@ -12,8 +16,8 @@ $videojuegos = $resultado->fetch_all(MYSQLI_ASSOC);
     <thead>
         <tr>
             <th>ID</th>
-            <th>Nombre</th>
-            <th>Descripción</th>
+            <th>Nom</th>
+            <th>Descripció</th>
             <th>Editar</th>
             <th>Eliminar</th>
         </tr>
@@ -30,3 +34,7 @@ $videojuegos = $resultado->fetch_all(MYSQLI_ASSOC);
         <?php } ?>
     </tbody>
 </table>
+
+<div class="form-group mt-2">
+    <a class="btn btn-warning" href="index.php">Tornar</a>
+</div>

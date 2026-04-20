@@ -2,7 +2,7 @@
 include "conexion.php";
 
 $id = $_GET["id"] ?? null;
-if (!$id) exit("No hay ID");
+if (!$id) exit("No hi ha ID");
 
 $sentencia = $mysqli->prepare("DELETE FROM videojocs WHERE id = ?");
 if (!$sentencia) die("Error en prepare: " . $mysqli->error);
